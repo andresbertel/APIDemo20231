@@ -65,22 +65,24 @@ namespace APIDemo.Controllers
 
         // POST api/<PersonasController>
         [HttpPost]
-        public void Post([FromBody] Personasdb personasdb)
+        public int Post([FromBody] Personasdb personasdb)
         {
             int result = context.Personasdb.Add(personasdb).Context.SaveChanges();
+            return result;
           
         }
 
         // PUT api/<PersonasController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Personasdb personaCatualizada)
+        public int Put(int id, [FromBody] Personasdb personaCatualizada)
         {
             Personasdb? personaBuscada = context.Personasdb.FirstOrDefault(x => x.Id == id);
-            if (personaBuscada == null) { return; }
+            if (personaBuscada == null) { return 0; }
             personaBuscada.Nombres = personaCatualizada?.Apellidos;
             personaBuscada.Apellidos = personaCatualizada?.Apellidos;
-            context.SaveChanges();
+            int result = context.SaveChanges();
 
+            return result;
         }
 
         // DELETE api/<PersonasController>/5
