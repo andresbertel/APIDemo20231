@@ -78,7 +78,7 @@ namespace APIDemo.Controllers
         {
             Personasdb? personaBuscada = context.Personasdb.FirstOrDefault(x => x.Id == id);
             if (personaBuscada == null) { return 0; }
-            personaBuscada.Nombres = personaCatualizada?.Apellidos;
+            personaBuscada.Nombres = personaCatualizada?.Nombres;
             personaBuscada.Apellidos = personaCatualizada?.Apellidos;
             int result = context.SaveChanges();
 
