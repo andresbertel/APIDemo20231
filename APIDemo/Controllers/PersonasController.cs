@@ -32,7 +32,7 @@ namespace APIDemo.Controllers
         [HttpGet("{id}")]
         public Personasdb Get(int id)
         {
-          //  var personasdb = context.Personasdb.FirstOrDefault(x => x.Id == id);
+           // Personasdb personasdb = context.Personasdb.FirstOrDefault(x => x.Id == id);
             Personasdb personasdb = null;
 
             //Procedimientos almacenados
@@ -77,6 +77,7 @@ namespace APIDemo.Controllers
         public int Put(int id, [FromBody] Personasdb personaCatualizada)
         {
             Personasdb? personaBuscada = context.Personasdb.FirstOrDefault(x => x.Id == id);
+
             if (personaBuscada == null) { return 0; }
             personaBuscada.Nombres = personaCatualizada?.Nombres;
             personaBuscada.Apellidos = personaCatualizada?.Apellidos;
