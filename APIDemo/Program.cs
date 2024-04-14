@@ -1,6 +1,7 @@
-using APIDemo.Context;
+﻿using APIDemo.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
+using APIDemo.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,11 +21,19 @@ var app = builder.Build();
 //{
     app.UseSwagger();
     app.UseSwaggerUI();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+};
 //}
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
 
 app.Run();

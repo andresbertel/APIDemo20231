@@ -21,11 +21,9 @@ namespace APIDemo.Controllers
 
         // GET: api/<PersonasController>
         [HttpGet]
-        public IEnumerable<Personasdb> Get()
+        public IEnumerable<Personasdb> ConseguirTodasLasPersonas()
         {
             return context.Personasdb.ToList();
-
-           
         }
 
         // GET api/<PersonasController>/5
@@ -74,13 +72,14 @@ namespace APIDemo.Controllers
 
         // PUT api/<PersonasController>/5
         [HttpPut("{id}")]
-        public int Put(int id, [FromBody] Personasdb personaCatualizada)
+        public int Put(int id, [FromBody] Personasdb personaActualizada)
         {
             Personasdb? personaBuscada = context.Personasdb.FirstOrDefault(x => x.Id == id);
 
             if (personaBuscada == null) { return 0; }
-            personaBuscada.Nombres = personaCatualizada?.Nombres;
-            personaBuscada.Apellidos = personaCatualizada?.Apellidos;
+
+            personaBuscada.Nombres = personaActualizada?.Nombres;
+            personaBuscada.Apellidos = personaActualizada?.Apellidos;
             int result = context.SaveChanges();
 
             return result;

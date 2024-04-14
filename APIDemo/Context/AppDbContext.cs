@@ -10,6 +10,11 @@ namespace APIDemo.Context
         }
 
         public DbSet<Personasdb> Personasdb { get; set; }
+        public DbSet<Cardb> Cardb { get; set; }
+        public DbSet<Housedb> Housedb { get; set; }
+
+
+      
 
     }
 }
